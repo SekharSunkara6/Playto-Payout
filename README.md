@@ -3,13 +3,6 @@
 - Cross-border payout infrastructure for Indian agencies, freelancers, and online businesses.
 - Built for the **Playto Founding Engineer Challenge 2026**.
 
-![Python](https://img.shields.io/badge/Python-3.11-blue?style=flat-square&logo=python)
-![Django](https://img.shields.io/badge/Django-4.2-green?style=flat-square&logo=django)
-![React](https://img.shields.io/badge/React-18-61dafb?style=flat-square&logo=react)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-336791?style=flat-square&logo=postgresql)
-![Celery](https://img.shields.io/badge/Celery-5.3-green?style=flat-square)
-![Redis](https://img.shields.io/badge/Redis-7-red?style=flat-square&logo=redis)
-
 ---
 
 ## 🌐 Live Demo
@@ -607,5 +600,5 @@ balance column) means the balance is always derivable from first
 principles — no drift possible, full audit trail built-in.
 
 The **atomic state machine** that refunds funds on failure in the same
-`transaction.atomic()` block as the status change — either both happen
+`transaction.atomic()` block as the status change either both happen
 or neither does.
