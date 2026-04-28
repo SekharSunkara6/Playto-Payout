@@ -3,9 +3,7 @@ import dj_database_url
 import os
 
 DEBUG = False
-
 SECRET_KEY = os.environ.get('SECRET_KEY', 'fallback-secret-change-me')
-
 ALLOWED_HOSTS = ['*']
 
 DATABASE_URL = os.environ.get('DATABASE_URL')
@@ -17,6 +15,9 @@ CELERY_BROKER_URL = REDIS_URL
 CELERY_RESULT_BACKEND = REDIS_URL
 
 CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+    "https://playto-payout-weld.vercel.app",
+]
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
