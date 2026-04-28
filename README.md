@@ -1,7 +1,7 @@
 # ⚡ Playto Payout Engine
 
-> Cross-border payout infrastructure for Indian agencies, freelancers, and online businesses.
-> Built for the **Playto Founding Engineer Challenge 2026**.
+Cross-border payout infrastructure for Indian agencies, freelancers, and online businesses.
+Built for the **Playto Founding Engineer Challenge 2026**.
 
 ---
 
