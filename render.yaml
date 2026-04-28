@@ -48,6 +48,7 @@ services:
   - type: redis
     name: playto-redis
     plan: free
+    ipAllowList: []
 
 databases:
   - name: playto-db
