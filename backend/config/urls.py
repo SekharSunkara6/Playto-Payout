@@ -312,7 +312,7 @@ def api_home(request):
   <div class="nav-links">
     <a href="/api/v1/merchants/" class="nav-btn nav-btn-ghost">📡 API</a>
     <a href="/admin/" class="nav-btn nav-btn-ghost">⚙️ Admin</a>
-    <a href="http://localhost:5173" class="nav-btn nav-btn-primary">🚀 Dashboard</a>
+    <a href="https://playto-payout-weld.vercel.app" class="nav-btn nav-btn-primary">🚀 Dashboard</a>
   </div>
 </nav>
 
@@ -324,7 +324,7 @@ def api_home(request):
   <h1>Cross-border <span>Payout Engine</span><br>for Indian Merchants</h1>
   <p>Production-grade payment infrastructure. Handles concurrency, idempotency, and ledger integrity so merchants can withdraw international earnings to Indian bank accounts.</p>
   <div class="hero-buttons">
-    <a href="http://localhost:5173" class="btn-hero btn-hero-primary">🚀 Open Merchant Dashboard</a>
+    <a href="https://playto-payout-weld.vercel.app" class="btn-hero btn-hero-primary">🚀 Open Merchant Dashboard</a>
     <a href="/api/v1/merchants/" class="btn-hero btn-hero-outline">📡 Explore API</a>
   </div>
 </div>
@@ -467,7 +467,7 @@ def api_home(request):
   <div class="footer-right">
     <a href="/admin/" class="footer-link">Admin Panel</a>
     <a href="/api/v1/merchants/" class="footer-link">Merchants API</a>
-    <a href="http://localhost:5173" class="footer-link">Dashboard</a>
+    <a href="https://playto-payout-weld.vercel.app" class="footer-link">Dashboard</a>
   </div>
 </footer>
 
