@@ -19,10 +19,7 @@ services:
           name: playto-db
           property: connectionString
       - key: REDIS_URL
-        fromService:
-          name: playto-redis
-          type: redis
-          property: connectionString
+        value: "rediss://default:gQAAAAAAATiRAAIgcDIwY2FjMTZlZDU0NzQ0NWQyOGM2ZWI4NWM3N2YxMzAxZg@relaxed-macaw-80017.upstash.io:6379"
 
   - type: worker
     name: playto-celery
@@ -40,15 +37,7 @@ services:
           name: playto-db
           property: connectionString
       - key: REDIS_URL
-        fromService:
-          name: playto-redis
-          type: redis
-          property: connectionString
-
-  - type: redis
-    name: playto-redis
-    plan: free
-    ipAllowList: []
+        value: "rediss://default:gQAAAAAAATiRAAIgcDIwY2FjMTZlZDU0NzQ0NWQyOGM2ZWI4NWM3N2YxMzAxZg@relaxed-macaw-80017.upstash.io:6379"
 
 databases:
   - name: playto-db
