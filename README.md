@@ -27,7 +27,7 @@
 ![Payout Processing](screenshots/payout-processing.png)
 
 ### ✅ Payout Completed — Funds Settled
-![Payout Completed](screenshots/payout-completed.png)
+![Payout Completed](screenshots/payout-complete.png)
 
 ### ❌ Payout Failed — Funds Returned to Ledger Automatically
 ![Payout Failed](screenshots/payout-failed.png)
