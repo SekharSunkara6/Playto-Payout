@@ -18,7 +18,7 @@
 
 ---
 
-## 📸 Screenshots
+## 📸 Local-Machine Screenshots
 
 ### 🎨 Merchant Dashboard — Balance Cards & Ledger
 ![Dashboard](screenshots/dashboard.png)
