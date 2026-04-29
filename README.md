@@ -18,6 +18,21 @@
 
 ---
 
+## 📸 Screenshots
+
+### 🎨 Merchant Dashboard — Balance Cards & Ledger
+![Dashboard](screenshots/payout 1.png)
+
+### 💸 Payout Request — Live Status Updates
+![Payout Processing](screenshots/payout 2.png)
+
+### ✅ Payout Completed — Funds Settled
+![Payout Completed](screenshots/payout 3.png)
+
+### 🧪 All 3 Tests Passing — Concurrency + Idempotency
+![Tests Passing](screenshots/payout 4.png)
+
+---
 ## 🏗️ Architecture Overview
 
 ```
