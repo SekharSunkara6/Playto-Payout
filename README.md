@@ -7,14 +7,14 @@
 
 ## 🌐 Live Demo
 
-| Service | URL |
-|---------|-----|
-| 🎨 Frontend Dashboard | https://playto-payout-weld.vercel.app |
-| 🔌 Backend API | https://playto-payout-1yb3.onrender.com |
-| 📡 Merchants API | https://playto-payout-1yb3.onrender.com/api/v1/merchants/ |
-| 💰 Balance API | https://playto-payout-1yb3.onrender.com/api/v1/merchants/1/balance/ |
-| 📒 Ledger API | https://playto-payout-1yb3.onrender.com/api/v1/merchants/1/ledger/ |
-| 💸 Payouts API | https://playto-payout-1yb3.onrender.com/api/v1/payouts/list/?merchant_id=1 |
+| Service               | URL                                                                        |
+| --------------------- | -------------------------------------------------------------------------- |
+| 🎨 Frontend Dashboard | https://playto-payout-weld.vercel.app                                      |
+| 🔌 Backend API        | https://playto-payout-1yb3.onrender.com                                    |
+| 📡 Merchants API      | https://playto-payout-1yb3.onrender.com/api/v1/merchants/                  |
+| 💰 Balance API        | https://playto-payout-1yb3.onrender.com/api/v1/merchants/1/balance/        |
+| 📒 Ledger API         | https://playto-payout-1yb3.onrender.com/api/v1/merchants/1/ledger/         |
+| 💸 Payouts API        | https://playto-payout-1yb3.onrender.com/api/v1/payouts/list/?merchant_id=1 |
 
 ---
 
@@ -42,14 +42,14 @@
 
 ## 🛠️ Tech Stack
 
-| Layer | Technology | Purpose |
-|-------|-----------|---------|
-| 🎨 Frontend | React 18 + Vite + Tailwind CSS | Merchant dashboard with live updates every 4s |
-| 🔌 Backend | Django 4.2 + Django REST Framework | REST API with atomic transactions |
-| 🗄️ Database | PostgreSQL (Neon) | Row-level locking, BigIntegerField for paise |
-| 📬 Queue | Celery 5.3 + Redis (Upstash) | Async payout processing with retries |
-| 🔄 Scheduler | Celery Beat | Retry stuck payouts every 30 seconds |
-| 🚀 Hosting | Render + Vercel + Neon + Upstash | Full production stack, all free tier |
+| Layer        | Technology                         | Purpose                                       |
+| ------------ | ---------------------------------- | --------------------------------------------- |
+| 🎨 Frontend  | React 18 + Vite + Tailwind CSS     | Merchant dashboard with live updates every 4s |
+| 🔌 Backend   | Django 4.2 + Django REST Framework | REST API with atomic transactions             |
+| 🗄️ Database  | PostgreSQL (Neon)                  | Row-level locking, BigIntegerField for paise  |
+| 📬 Queue     | Celery 5.3 + Redis (Upstash)       | Async payout processing with retries          |
+| 🔄 Scheduler | Celery Beat                        | Retry stuck payouts every 30 seconds          |
+| 🚀 Hosting   | Render + Vercel + Neon + Upstash   | Full production stack, all free tier          |
 
 ---
 
@@ -208,6 +208,7 @@ VITE_API_URL=http://localhost:8000/api/v1
 Open **4 terminal windows** simultaneously:
 
 **🖥️ Terminal 1 — Django Server**
+
 ```bash
 cd backend
 venv\Scripts\activate
@@ -216,6 +217,7 @@ python manage.py runserver
 ```
 
 **⚙️ Terminal 2 — Celery Worker**
+
 ```bash
 cd backend
 venv\Scripts\activate
@@ -224,6 +226,7 @@ celery -A config worker -l info --pool=solo
 ```
 
 **🔄 Terminal 3 — Celery Beat Scheduler**
+
 ```bash
 cd backend
 venv\Scripts\activate
@@ -232,6 +235,7 @@ celery -A config beat -l info
 ```
 
 **🎨 Terminal 4 — React Frontend**
+
 ```bash
 cd frontend
 npm run dev
@@ -249,10 +253,10 @@ Open **http://localhost:5173** in your browser 🎉
 docker-compose up
 ```
 
-| Service | Port |
-|---------|------|
-| PostgreSQL | 5432 |
-| Redis | 6379 |
+| Service        | Port |
+| -------------- | ---- |
+| PostgreSQL     | 5432 |
+| Redis          | 6379 |
 | Django Backend | 8000 |
 | React Frontend | 5173 |
 
@@ -267,11 +271,11 @@ python manage.py test tests -v 2
 
 ### 📊 Test Coverage
 
-| Test | File | Type | What it proves |
-|------|------|------|----------------|
-| `test_concurrent_overdraw_prevented` | `test_concurrency.py` | `TransactionTestCase` | Two simultaneous ₹60 requests against ₹100 balance — exactly one succeeds, ledger integrity maintained |
-| `test_same_key_returns_same_response` | `test_idempotency.py` | `TestCase` | Same idempotency key returns identical response, only one payout created in DB |
-| `test_different_keys_create_different_payouts` | `test_idempotency.py` | `TestCase` | Different keys create separate payouts correctly |
+| Test                                           | File                  | Type                  | What it proves                                                                                         |
+| ---------------------------------------------- | --------------------- | --------------------- | ------------------------------------------------------------------------------------------------------ |
+| `test_concurrent_overdraw_prevented`           | `test_concurrency.py` | `TransactionTestCase` | Two simultaneous ₹60 requests against ₹100 balance — exactly one succeeds, ledger integrity maintained |
+| `test_same_key_returns_same_response`          | `test_idempotency.py` | `TestCase`            | Same idempotency key returns identical response, only one payout created in DB                         |
+| `test_different_keys_create_different_payouts` | `test_idempotency.py` | `TestCase`            | Different keys create separate payouts correctly                                                       |
 
 > ⚠️ **Why `TransactionTestCase` for concurrency?**
 > `select_for_update()` requires real committed transactions to work across
@@ -280,6 +284,7 @@ python manage.py test tests -v 2
 > the DB after each test instead, allowing real commits.
 
 **Expected output:**
+
 ```
 Thread results: [201, 400]
 Ledger: credits=10000 debits=6000 remaining=4000
@@ -292,6 +297,7 @@ OK
 ## 📡 API Reference
 
 ### 🔗 Base URL
+
 ```
 https://playto-payout-1yb3.onrender.com/api/v1
 ```
@@ -301,9 +307,11 @@ https://playto-payout-1yb3.onrender.com/api/v1
 ```http
 GET /merchants/
 ```
+
 Returns all merchants with their bank accounts.
 
 **Response:**
+
 ```json
 [
   {
@@ -326,9 +334,11 @@ Returns all merchants with their bank accounts.
 ```http
 GET /merchants/{id}/balance/
 ```
+
 Returns total, available and held balance in paise.
 
 **Response:**
+
 ```json
 {
   "merchant_id": 1,
@@ -342,6 +352,7 @@ Returns total, available and held balance in paise.
 ```http
 GET /merchants/{id}/ledger/
 ```
+
 Returns full credit/debit ledger history (last 100 entries).
 
 ### 💸 Payout Endpoints
@@ -364,6 +375,7 @@ Idempotency-Key: <unique-uuid>
 | `Idempotency-Key` | Merchant-supplied UUID. Same key = same response. Expires after 24h. |
 
 **Response (201 Created):**
+
 ```json
 {
   "id": "uuid-here",
@@ -389,6 +401,7 @@ Idempotency-Key: <unique-uuid>
 ```http
 GET /payouts/list/?merchant_id={id}
 ```
+
 Returns payout history with live status (last 50).
 
 ### 🔄 Payout Lifecycle
@@ -399,11 +412,11 @@ PENDING ──▶ PROCESSING ──▶ COMPLETED ✅
                   └──▶ FAILED ❌ (funds returned atomically to ledger)
 ```
 
-| Outcome | Probability |
-|---------|-------------|
-| ✅ Success | 70% |
-| ❌ Failure | 20% |
-| ⏳ Hang (retried) | 10% |
+| Outcome           | Probability |
+| ----------------- | ----------- |
+| ✅ Success        | 70%         |
+| ❌ Failure        | 20%         |
+| ⏳ Hang (retried) | 10%         |
 
 ---
 
@@ -530,13 +543,14 @@ else:
 
 3 merchants pre-loaded with simulated client payment history:
 
-| Merchant | Email | Balance | Bank |
-|----------|-------|---------|------|
-| Arjun Sharma Designs | arjun@designs.in | ₹9,000 | HDFC ···7890 |
-| Priya Tech Solutions | priya@techsol.in | ₹9,000 | HDFC ···7890 |
-| Rahul Content Studio | rahul@contentstudio.in | ₹9,000 | HDFC ···7890 |
+| Merchant             | Email                  | Balance | Bank         |
+| -------------------- | ---------------------- | ------- | ------------ |
+| Arjun Sharma Designs | arjun@designs.in       | ₹9,000  | HDFC ···7890 |
+| Priya Tech Solutions | priya@techsol.in       | ₹9,000  | HDFC ···7890 |
+| Rahul Content Studio | rahul@contentstudio.in | ₹9,000  | HDFC ···7890 |
 
 Each merchant has 3 seed credits:
+
 - ₹5,000 — Logo design project
 - ₹1,500 — Social media package
 - ₹2,500 — Website redesign
@@ -547,23 +561,23 @@ Each merchant has 3 seed credits:
 
 ### Production Stack
 
-| Service | Platform | Plan |
-|---------|----------|------|
-| 🔌 Backend (Django) | Render | Free |
-| 🎨 Frontend (React) | Vercel | Free |
-| 🗄️ Database (PostgreSQL) | Neon | Free |
-| 📬 Queue (Redis) | Upstash | Free |
+| Service                  | Platform | Plan |
+| ------------------------ | -------- | ---- |
+| 🔌 Backend (Django)      | Render   | Free |
+| 🎨 Frontend (React)      | Vercel   | Free |
+| 🗄️ Database (PostgreSQL) | Neon     | Free |
+| 📬 Queue (Redis)         | Upstash  | Free |
 
 ### Environment Variables (Production)
 
-| Key | Description |
-|-----|-------------|
-| `DJANGO_SETTINGS_MODULE` | `config.settings.production` |
-| `SECRET_KEY` | Django secret key |
-| `DEBUG` | `False` |
-| `DATABASE_URL` | Neon PostgreSQL connection string |
-| `REDIS_URL` | Upstash Redis connection string |
-| `ALLOWED_HOSTS` | `*` |
+| Key                      | Description                       |
+| ------------------------ | --------------------------------- |
+| `DJANGO_SETTINGS_MODULE` | `config.settings.production`      |
+| `SECRET_KEY`             | Django secret key                 |
+| `DEBUG`                  | `False`                           |
+| `DATABASE_URL`           | Neon PostgreSQL connection string |
+| `REDIS_URL`              | Upstash Redis connection string   |
+| `ALLOWED_HOSTS`          | `*`                               |
 
 > ⚠️ **Note on Celery in Production:**
 > Render free tier does not support background workers without payment.
@@ -575,14 +589,14 @@ Each merchant has 3 seed credits:
 
 ## 📝 Submission Details
 
-| Item | Value |
-|------|-------|
-| 🔗 GitHub | https://github.com/SekharSunkara6/Playto-Payout |
-| 🌐 Live Demo | https://playto-payout-weld.vercel.app |
-| 🔌 Backend API | https://playto-payout-1yb3.onrender.com |
-| 📄 EXPLAINER.md | See EXPLAINER.md in repo root |
-| 🧪 Tests | `python manage.py test tests -v 2` → 3 tests, OK |
-| 🏆 Challenge | Playto Founding Engineer Challenge 2026 |
+| Item            | Value                                            |
+| --------------- | ------------------------------------------------ |
+| 🔗 GitHub       | https://github.com/SekharSunkara6/Playto-Payout  |
+| 🌐 Live Demo    | https://playto-payout-weld.vercel.app            |
+| 🔌 Backend API  | https://playto-payout-1yb3.onrender.com          |
+| 📄 EXPLAINER.md | See EXPLAINER.md in repo root                    |
+| 🧪 Tests        | `python manage.py test tests -v 2` → 3 tests, OK |
+| 🏆 Challenge    | Playto Founding Engineer Challenge 2026          |
 
 ---
 

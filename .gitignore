@@ -7,6 +7,9 @@ backend/*.pyo
 backend/staticfiles/
 backend/celerybeat-schedule
 backend/celerybeat-schedule.db
+backend/celerybeat-schedule.bak
+backend/celerybeat-schedule.dat
+backend/celerybeat-schedule.dir
 backend/.env
 
 # Node
